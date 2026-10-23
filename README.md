@@ -190,31 +190,21 @@ Las pruebas deben revisarse y ampliarse a medida que se incorporen nuevas funcio
 - Revisar los cambios antes de incorporarlos a la rama principal.
 - No utilizar contraseñas débiles en entornos compartidos o de producción.
 
-## 👨‍💻 Trabajo en equipo con Git
+## 🤝 Trabajo en equipo con Git y GitHub
 
-Antes de comenzar, actualiza tu copia local:
+El equipo trabaja directamente sobre la rama `main` del repositorio.
 
-```bash
-git pull origin main
-```
-
-Crea una rama para tu tarea:
-
-```bash
-git checkout -b feature/nombre-de-la-tarea
-```
-
-Después de realizar los cambios y comprobar que funcionan:
+Para subir cambios a GitHub, ejecutar:
 
 ```bash
 git add .
 git commit -m "Descripción de los cambios"
-git push origin feature/nombre-de-la-tarea
+git push origin main
 ```
 
-Luego, crea un **Pull Request** en GitHub para revisar los cambios antes de incorporarlos a `main`.
+Si otro integrante ha subido cambios al repositorio, se recomienda ejecutar `git pull origin main` antes de continuar trabajando para mantener el proyecto actualizado y evitar conflictos.
 
-No trabajes directamente sobre `main` sin coordinarte con el equipo.
+**Importante:** coordinar los cambios entre los integrantes para evitar modificar los mismos archivos simultáneamente.
 
 ## 📌 Tareas pendientes
 
