@@ -1,0 +1,43 @@
+{% extends "inventario/base.html" %}
+
+{% block title %}Eliminar producto | Seguridad LTDA{% endblock %}
+
+{% block content %}
+<section class="confirmacion-contenedor">
+    <div class="tarjeta confirmacion-tarjeta">
+        <div class="confirmacion-icono">!</div>
+
+        <span class="etiqueta etiqueta-roja">CONFIRMAR ACCIÓN</span>
+        <h1>¿Eliminar este producto?</h1>
+
+        <p class="texto-secundario">
+            Estás a punto de eliminar este registro del inventario.
+            Esta acción no se puede deshacer.
+        </p>
+
+        <div class="detalle-producto">
+            <div>
+                <span>Código</span>
+                <strong>{{ producto.codigo }}</strong>
+            </div>
+            <div>
+                <span>Nombre</span>
+                <strong>{{ producto.nombre }}</strong>
+            </div>
+            <div>
+                <span>Cantidad</span>
+                <strong>{{ producto.cantidad }}</strong>
+            </div>
+        </div>
+
+        <form method="post" class="acciones-formulario">
+            {% csrf_token %}
+            <a href="{% url 'lista_productos' %}"
+               class="boton boton-secundario">Cancelar</a>
+            <button type="submit" class="boton boton-peligro">
+                Sí, eliminar producto
+            </button>
+        </form>
+    </div>
+</section>
+{% endblock %}

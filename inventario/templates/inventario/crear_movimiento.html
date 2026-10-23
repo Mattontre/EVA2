@@ -1,0 +1,37 @@
+{% extends "inventario/base.html" %}
+
+{% block title %}Registrar movimiento{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h1>Registrar movimiento de bodega</h1>
+    <p>Registra una entrada o salida de productos.</p>
+
+    <form method="post" class="formulario">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="campo">
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                </label>
+
+                {{ field }}
+
+                {% if field.errors %}
+                    <div class="errores">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="boton">
+            Registrar movimiento
+        </button>
+
+        <a href="{% url 'lista_movimientos' %}"
+           class="boton-secundario">
+            Cancelar
+        </a>
+    </form>
+</section>
+{% endblock %}

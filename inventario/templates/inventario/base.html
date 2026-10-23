@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema seguro de gestión de inventario">
+    <title>{% block title %}Inventario | Seguridad LTDA{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'inventario/estilos.css' %}">
+</head>
+<body>
+    <header class="encabezado">
+        <div class="barra-superior">
+            <a class="marca" href="{% url 'lista_productos' %}">
+                <span class="marca-icono">SL</span>
+                <span>
+                    <strong>Seguridad LTDA</strong>
+                    <small>Sistema de inventario</small>
+                </span>
+            </a>
+
+            {% if user.is_authenticated %}
+            <nav class="navegacion">
+                <a href="{% url 'lista_productos' %}">
+                    Productos
+                </a>
+
+                {% if user.groups.all %}
+                <a href="{% url 'crear_producto' %}">
+                    Crear producto
+                </a>
+                {% endif %}
+
+                <a href="{% url 'lista_movimientos' %}">
+                    Movimientos de bodega
+                </a>
+
+                <a href="{% url 'crear_movimiento' %}">
+                    Registrar movimiento
+                </a>
+
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="enlace-nav">
+                        Cerrar sesión
+                    </button>
+                </form>
+            </nav>
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="contenido">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alerta">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="pie">
+        <p>Seguridad LTDA · Sistema de gestión de inventario</p>
+        <small>Desarrollo Seguro · DevSecOps</small>
+    </footer>
+</body>
+</html>

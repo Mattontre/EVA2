@@ -1,0 +1,36 @@
+{% extends "inventario/base.html" %}
+
+{% block title %}Crear producto{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h1>Crear producto</h1>
+    <p>Completa los datos del producto.</p>
+
+    <form method="post" class="formulario">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="errores">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        {% for field in form %}
+            <div class="campo">
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                </label>
+                {{ field }}
+
+                {% if field.errors %}
+                    <div class="errores">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="boton">Guardar producto</button>
+        <a href="{% url 'lista_productos' %}" class="boton-secundario">
+            Cancelar
+        </a>
+    </form>
+</section>
+{% endblock %}

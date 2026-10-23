@@ -1,0 +1,51 @@
+{% extends "inventario/base.html" %}
+
+{% block title %}Movimientos de bodega{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h1>Movimientos de bodega</h1>
+    <p>Historial de entradas y salidas de productos.</p>
+
+    {% if user.groups.all %}
+        {% if user.is_authenticated %}
+            <a href="{% url 'crear_movimiento' %}" class="boton">
+                Registrar movimiento
+            </a>
+        {% endif %}
+    {% endif %}
+
+    <div class="tabla-contenedor">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Producto</th>
+                    <th>Tipo</th>
+                    <th>Cantidad</th>
+                    <th>Usuario</th>
+                    <th>Observación</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movimiento in movimientos %}
+                    <tr>
+                        <td>{{ movimiento.fecha|date:"d/m/Y H:i" }}</td>
+                        <td>{{ movimiento.producto.codigo }} - {{ movimiento.producto.nombre }}</td>
+                        <td>{{ movimiento.get_tipo_display }}</td>
+                        <td>{{ movimiento.cantidad }}</td>
+                        <td>{{ movimiento.usuario|default:"Sin usuario" }}</td>
+                        <td>{{ movimiento.observacion|default:"—" }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6">
+                            Todavía no hay movimientos registrados.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

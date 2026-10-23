@@ -1,0 +1,67 @@
+{% extends "inventario/base.html" %}
+
+{% block title %}Iniciar sesión | Seguridad LTDA{% endblock %}
+
+{% block content %}
+<section class="login-contenedor">
+    <div class="login-tarjeta">
+        <div class="login-icono">SL</div>
+
+        <h1>Bienvenido</h1>
+        <p class="texto-secundario">
+            Inicia sesión para acceder al inventario.
+        </p>
+
+        {% if form.errors %}
+            <div class="error-formulario">
+                El usuario o la contraseña son incorrectos.
+            </div>
+        {% endif %}
+
+        {% if next and user.is_authenticated %}
+            <div class="error-formulario">
+                Tu cuenta no tiene permiso para acceder a esa página.
+            </div>
+        {% endif %}
+
+        <form method="post" class="formulario">
+            {% csrf_token %}
+
+            <div class="campo">
+                <label for="id_username">Nombre de usuario</label>
+                <input
+                    type="text"
+                    name="username"
+                    id="id_username"
+                    autocomplete="username"
+                    required
+                    autofocus
+                    placeholder="Introduce tu usuario"
+                >
+            </div>
+
+            <div class="campo">
+                <label for="id_password">Contraseña</label>
+                <input
+                    type="password"
+                    name="password"
+                    id="id_password"
+                    autocomplete="current-password"
+                    required
+                    placeholder="Introduce tu contraseña"
+                >
+            </div>
+
+            <input type="hidden" name="next" value="/inventario/">
+
+            <button type="submit" class="boton boton-primario boton-ancho">
+                Iniciar sesión
+            </button>
+        </form>
+
+        <p class="nota-seguridad">
+            Acceso exclusivo para usuarios autorizados.
+        </p>
+    </div>
+</section>
+{% endblock %}
