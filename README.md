@@ -225,6 +225,12 @@ No trabajes directamente sobre `main` sin coordinarte con el equipo.
 - Documentar los resultados de las pruebas.
 - Preparar evidencias para la evaluación de Desarrollo Seguro (DevSecOps).
 
+## 👥 Integrantes del equipo
+
+- **Jeremy Rincón**
+- **Matías Parraz**
+- **Benjamin Gutiérrez**
+
 ## 📚 Información académica
 
 **Proyecto:** ERP Seguridad LTDA — Módulo de Inventario  
