@@ -18,6 +18,7 @@ El objetivo es gestionar productos, controlar las entradas y salidas de bodega y
 ## ✅ Funcionalidades implementadas
 
 ### Gestión de productos
+
 - Listar productos.
 - Crear productos.
 - Editar productos.
@@ -26,6 +27,7 @@ El objetivo es gestionar productos, controlar las entradas y salidas de bodega y
 - Gestionar código, nombre, código de barras, grupo, subgrupo, ficha técnica, unidad de medida, cantidad y precio.
 
 ### Movimientos de bodega
+
 - Registrar entradas de productos.
 - Registrar salidas de productos.
 - Actualizar automáticamente el stock.
@@ -33,6 +35,7 @@ El objetivo es gestionar productos, controlar las entradas y salidas de bodega y
 - Consultar el historial de movimientos.
 
 ### Seguridad y auditoría
+
 - Inicio y cierre de sesión.
 - Restricción de operaciones administrativas mediante grupos de usuarios.
 - Registro de acciones sobre productos.
@@ -58,7 +61,7 @@ En Windows, ejecuta:
 python -m venv .venv
 ```
 
-Activa el entorno virtual:
+Activa el entorno virtual con PowerShell:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
@@ -70,10 +73,14 @@ Si utilizas CMD en lugar de PowerShell:
 .venv\Scripts\activate.bat
 ```
 
-### 3. Instalar Django
+### 3. Instalar las dependencias
+
+El proyecto incluye el archivo `requirements.txt`, que contiene las dependencias necesarias.
+
+Ejecuta:
 
 ```bash
-python -m pip install django
+python -m pip install -r requirements.txt
 ```
 
 ### 4. Crear la base de datos
@@ -126,7 +133,7 @@ Para configurar este permiso:
 4. Entra en **Usuarios**.
 5. Selecciona el usuario autorizado y agrégalo al grupo.
 
-El acceso al panel de administración y los permisos para gestionar el inventario son independientes.
+El acceso al panel de administración y los permisos para gestionar el inventario son configuraciones independientes.
 
 ## 📦 Estructura del proyecto
 
@@ -152,6 +159,7 @@ EVA2/
 │   └── tests.py
 ├── .gitignore
 ├── manage.py
+├── requirements.txt
 └── README.md
 ```
 
